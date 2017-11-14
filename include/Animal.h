@@ -1,24 +1,23 @@
 #include <string>
-using namespace std;
 
 class Animal{
 public:
-	Animal{string breed, string name, string colour, string earType, string height, string tailColour, string dadsName, string mumsName);
-	void getBreed;
-	void getName;
-	void getColour;
-	void getEarType;
-	void getHeight;
-	void getTailColour;
-	void getDadsName;
-	void getMumsName;
+	Animal{std::string breed, std::string name, std::string colour, std::string earType, std::string height, std::string tailColour, std::string dadsName, std::string mumsName);
+	std::string getBreed();
+	std::string getName();
+	std::string getColour();
+	std::string getEarType();
+	std::string getHeight();
+	std::string getTailColour();
+	std::string getDadsName();
+	std::string getMumsName();
 private:
-	string breed;
-	string name;
-	string colour;
-	string earType;
-	string height;
-	string tailColour;
-	string dadsName;
-	string mumsName;
+	std::string breed;
+	std::string name;
+	std::string colour;
+	std::string earType;
+	std::string height;
+	std::string tailColour;
+	std::string dadsName;
+	std::string mumsName;
 };
