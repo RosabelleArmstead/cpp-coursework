@@ -4,9 +4,9 @@ SRCDIR = src
 OBJDIR = obj
 BINDIR = bin
 
-CC = g++
+CC = g++ -std=c++11
 CFLAGS = -g -Wall -I$(INCDIR) -lm
-LINKER = g++ -o
+LINKER = g++ -std=c++11 -o
 LFLAGS = -Wall -I$(INCDIR) -lm
 
 SOURCES := $(wildcard $(SRCDIR)/*.cpp)
