@@ -14,34 +14,34 @@ Animal::Animal(string a_breed, string a_name, string a_colour, string a_earType,
 	mumsName = a_mumsName;
 }
 
-void Animal::getBreed() {
+string Animal::getBreed() {
 	return breed;
 }
 
-void Animal::getName() {
+string Animal::getName() {
 	return name;
 }
 
-void Animal::getColour() {
+string Animal::getColour() {
 	return colour;
 }
 
-void Animal::getEarType() {
+string Animal::getEarType() {
 	return earType;
 }
 
-void Animal::getHeight() {
+string Animal::getHeight() {
 	return height;
 }
 
-void Animal::getTailColour() {
+string Animal::getTailColour() {
 	return tailColour;
 }
 
-void Animal::getDadsName() {
+string Animal::getDadsName() {
 	return dadsName;
 }
 
-void Animal::getMumsName() {
+string Animal::getMumsName() {
 	return mumsName;
 }
