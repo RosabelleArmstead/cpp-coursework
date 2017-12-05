@@ -1,5 +1,5 @@
 #include <string>
-
+#include "Aesthetics.h"
 class Aesthetics {
 public: 
   Aesthetics{std::colour, std::earType, std::height, std::tailColour}
