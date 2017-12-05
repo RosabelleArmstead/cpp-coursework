@@ -1,5 +1,5 @@
 #include "Animal.h"
-#inlcude <string>
+#include <string>
 using namespace std;
 
 Animal::Animal(string a_breed, string a_name, string a_colour, string a_earType, string a_height, string a_tailColour, string a_dadsName, string a_mumsName)
