@@ -2,22 +2,16 @@
 
 class Animal{
 public:
-	Animal{std::string breed, std::string name, std::string colour, std::string earType, std::string height, std::string tailColour, std::string dadsName, std::string mumsName);
+	Animal{std::string breed, std::string name, Aesthetic aesthetics, std::string dadsName, std::string mumsName);
 	std::string getBreed();
 	std::string getName();
-	std::string getColour();
-	std::string getEarType();
-	std::string getHeight();
-	std::string getTailColour();
+	Aesthetic getAesthetics();
 	std::string getDadsName();
 	std::string getMumsName();
 private:
 	std::string breed;
 	std::string name;
-	std::string colour;
-	std::string earType;
-	std::string height;
-	std::string tailColour;
+	Aesthetics aesthetics;
 	std::string dadsName;
 	std::string mumsName;
 };
