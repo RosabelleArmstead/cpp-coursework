@@ -1,4 +1,5 @@
 #include <string>
+#include "Aesthetics.h"
 using namespace std;
 
 Aesthetics::Aesthetics(string a_colour, string a_earType, string a_height, string a_tailColour)
