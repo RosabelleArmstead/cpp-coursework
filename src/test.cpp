@@ -3,18 +3,9 @@
 #include <sstream>
 using namespace std;
 
-
-map<string, dogs> readInFile(string filename);
-
-
 int main() {
-	
-	return 0;
-}
-
-map<string, dogs> readInFile(string filename) {
-  string param[8];
-	
+	string param[8];
+	Map<string, Dog> dogMap()
 	ifstream infile("inputDog.txt");
 	if (infile.is_open()) {
 		
@@ -29,9 +20,22 @@ map<string, dogs> readInFile(string filename) {
 				cout << param[i] << endl;
 			}
 			
-			//if fatherPointer is null make dog and add to map
-			//else set to address of father in map
+			if (param[7] = '') 
+			{
+				Asthetic asthetic(param[2], param[3], param[4], param[5]);
+				Dog newDog(param[0], param[1], asthetic, param[6], null); 	
+			}
+			 else
+			{
+				Asthetic asthetic(param[2], param[3], param[4], param[5]);
+				Dog newDog(param[0], param[1], asthetic, param[6],dogMap.getValue(param[7])); 
+			}			
+								
 		}
 
-		//return map of dogs
+		//return dogmap
+
+	}
+	return 0;
+
 }
