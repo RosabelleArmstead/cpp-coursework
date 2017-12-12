@@ -1,5 +1,6 @@
 #include <string>
 #include "Aesthetics.h"
+#pragma once
 class Animal : public Aesthetics {
 public:
 	Animal(std::string breed, std::string name, std::string colour, std::string earType, std::string height, std::string tailColour, Animal *animal, std::string mumsName);
