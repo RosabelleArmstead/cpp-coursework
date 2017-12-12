@@ -1,17 +1,15 @@
 #include <string>
-
-class Animal{
+#include "Aesthetics.h"
+class Animal : public Aesthetics {
 public:
-	Animal{std::string breed, std::string name, Aesthetic aesthetics, std::string dadsName, std::string mumsName);
+	Animal(std::string breed, std::string name, std::string colour, std::string earType, std::string height, std::string tailColour, Animal *animal, std::string mumsName);
 	std::string getBreed();
 	std::string getName();
-	Aesthetic getAesthetics();
-	std::string getDadsName();
+	Animal* getDad();
 	std::string getMumsName();
 private:
 	std::string breed;
 	std::string name;
-	Aesthetics aesthetics;
-	std::string dadsName;
+	Animal *animal;
 	std::string mumsName;
 };

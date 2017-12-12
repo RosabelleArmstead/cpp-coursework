@@ -1,13 +1,13 @@
 #include "Animal.h"
 #include <string>
+
 using namespace std;
 
-Animal::Animal(string a_breed, string a_name, Aesthetic a_aesthetics, string a_dadsName, string a_mumsName)
+Animal::Animal(string a_breed, string a_name, string a_colour, string a_earType, string a_height, string a_tailColour, Animal *a_animal,string a_mumsName) : Aesthetics(a_colour, a_earType, a_height, a_tailColour)
 {
 	breed = a_breed;
 	name = a_name;
-	aesthetics = a_aesthetics;
-	dadsName = a_dadsName;
+	animal = a_animal;
 	mumsName = a_mumsName;
 }
 
@@ -19,12 +19,8 @@ string Animal::getName() {
 	return name;
 }
 
-Aesthetics Animal::getAesthetics() {
-	return aesthetics;
-}
-
-string Animal::getDadsName() {
-	return dadsName;
+Animal* Animal::getDad() {
+	return animal;
 }
 
 string Animal::getMumsName() {

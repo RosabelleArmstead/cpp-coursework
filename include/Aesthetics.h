@@ -1,8 +1,8 @@
 #include <string>
-#include "Aesthetics.h"
+
 class Aesthetics {
 public: 
-  Aesthetics{std::colour, std::earType, std::height, std::tailColour}
+  Aesthetics(std::string colour, std::string earType, std::string height, std::string tailColour);
   std::string getColour();
   std::string getEarType();
   std::string getHeight();

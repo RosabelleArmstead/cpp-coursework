@@ -9,3 +9,19 @@ earType = a_earType;
 height = a_height;
 tailColour = a_tailColour;
 }
+
+string Aesthetics::getColour() {
+	return colour;
+}
+
+string Aesthetics::getEarType() {
+	return earType;
+}
+
+string Aesthetics::getHeight() {
+	return height;
+}
+
+string Aesthetics::getTailColour() {
+	return tailColour;
+}
