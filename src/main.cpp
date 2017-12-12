@@ -83,12 +83,23 @@ void processInput()
 int main()
 {
 	map<string,Dog> dogs = readDogs("dogs.csv");
-
-	while(dogs.end().getDad!=0) {
-
 		
+	cout << "Enter the first letter of the animal group and the name of the specified one to find its paternal tree: ";
+
+	string inputDogName;
+	cin >> inputDogName;
+
+	Dog tmp = dogs.at(inputDogName);		
+
+	cout << "Paternal tree of " << inputDogName << ":" << endl;
+	cout << inputDogName << " <-- ";
+	while(dogs.at(tmp.getName()).getDad()!=0) {
+
+		cout << tmp.getDad()->getName() << " <-- ";
+		tmp = dogs.at(tmp.getDad()->getName());
 
 	}
+	cout << "[END]" << endl;
 	
 	//cout << dad->getName() << endl;
 
