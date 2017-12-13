@@ -16,7 +16,7 @@ void processInput();
 //void processDog (string inputAnimal, string file);
 //void processCat (string inputAnimal, string file);
 //void processHorse (string inputAnimal, string file);
-template <class T> void processAnimal(string inputAnimal, T animal, map<string, T> map);
+template <class T> void processAnimal(string inputAnimal, map<string, T> map);
 string chooseFile(string inputAnimal);
 
 map<string, Dog> globalDogMap;
@@ -83,15 +83,15 @@ void processInput()
 	
 	if (inputAnimal[0] == 'd')
 	{
-		processAnimal<Dog>(inputAnimal, Dog, globalDogMap);
+		processAnimal<Dog>(inputAnimal, globalDogMap);
 	}
 	else if (inputAnimal[0] == 'c')
 	{
-		processAnimal<Cat>(inputAnimal, Cat, globalCatMap);
+		processAnimal<Cat>(inputAnimal, globalCatMap);
 	}
 	else if (inputAnimal[0] == 'h')
 	{
-		processAnimal<Horse>(inputAnimal, Horse, globalHorseMap);
+		processAnimal<Horse>(inputAnimal, globalHorseMap);
 	}
 	else
 	{
@@ -105,14 +105,14 @@ void processInput()
 }
 
 
-template <class T> void processAnimal(string inputAnimal, T animal, map<string,T> tMap) {
+template <class T> void processAnimal(string inputAnimal, map<string,T> tMap) {
 	
-	animal = tMap.at(inputAnimal);
+	Animal animal = tMap.at(inputAnimal);
 	cout << "Paternal tree of " << inputAnimal << ":" << endl;
 	cout << inputAnimal << " <-- ";
 	while(tMap.at(animal.getName()).getDad()!=0) {
 		cout << animal.getDad()->getName() << " <-- ";
-		animal = tMap.at(tmp.getDad()->getName());
+		animal = tMap.at(animal.getDad()->getName());
 	}
 	cout << "[END]" << endl;
 	
