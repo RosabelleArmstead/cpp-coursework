@@ -7,6 +7,7 @@
 #include <string>
 #include <sstream>
 #include <map>
+#include <iomanip>
 using namespace std;
 
 //function declarations - map template? key = name
@@ -83,22 +84,23 @@ void processInput()
 	
 	if (inputAnimal[0] == 'd')
 	{
+		inputAnimal = ltrim(inputAnimal);
 		processAnimal<Dog>(inputAnimal, globalDogMap);
 	}
 	else if (inputAnimal[0] == 'c')
 	{
+		inputAnimal = ltrim(inputAnimal);
 		processAnimal<Cat>(inputAnimal, globalCatMap);
 	}
 	else if (inputAnimal[0] == 'h')
 	{
+		inputAnimal = ltrim(inputAnimal);
 		processAnimal<Horse>(inputAnimal, globalHorseMap);
 	}
 	else
 	{
 		cout << "Not an animal!";
 	}
-	
-	inputAnimal = ltrim(inputAnimal);
 	
 	
 	//TODO: try catch for if animal not existing
@@ -118,6 +120,79 @@ template <class T> void processAnimal(string inputAnimal, map<string,T> tMap) {
 	
 }
 
+//Displays the entire inventory
+void displayInventory() 
+{
+	cout << "There are " << globalDogMap.size() << " dog(s), " << globalCatMap.size() << " cat(s) and " << globalHorseMap.size() << " horse(s) in the inventory, which are:" << endl;
+	//dogs
+	int widthCounter = 91;
+		
+	cout << left;
+	cout << setw(10) << "Name" << setw(10) << "Group" << setw(10) << "Breed" << setw(10) 
+	<< "Colour" << setw(12) << "Ear Type" << setw(10) << "Height" << setw(16) << "Tail Colour" << setw(10) << "Dad" << setw(3) << "Mum" << endl;	
+
+
+	for (int i = 0; i <= widthCounter; i++ )	
+	{
+ 		cout << "-";	
+	}
+
+	cout << endl;
+	
+	map<std::string, Dog>::iterator dogIt;
+	for (dogIt = globalDogMap.begin(); dogIt != globalDogMap.end(); dogIt++) {
+		Dog currentDog = dogIt->second;
+		string currentDogMum = "N/A";
+		string currentDogDad = "N/A";
+		
+		if (currentDog.getDad() != 0) {
+			currentDogMum = currentDog.getMumsName();
+			currentDogDad = currentDog.getDad()->getName();
+		}
+		
+		cout << left;
+		cout << setw(10) << currentDog.getName() << setw(10) << "Dog" << setw(10) << 
+		currentDog.getBreed() << setw(10) << currentDog.getColour() << setw(12) << currentDog.getEarType() << setw(10) << currentDog.getHeight() << setw(16) << 
+		currentDog.getTailColour() << setw(10) << currentDogDad << currentDogMum << endl;
+	}
+	cout << endl;
+	//cats
+	map<std::string, Cat>::iterator catIt;
+	for (catIt = globalCatMap.begin(); catIt != globalCatMap.end(); catIt++) {
+		Cat currentCat = catIt->second;
+		string currentCatMum = "N/A";
+		string currentCatDad = "N/A";
+		
+		if (currentCat.getDad() != 0) {
+			currentCatMum = currentCat.getMumsName();
+			currentCatDad = currentCat.getDad()->getName();
+		}
+		
+		cout << left;
+		cout << setw(10) << currentCat.getName() << setw(10) << "Cat" << setw(10) << 
+		currentCat.getBreed() << setw(10) << currentCat.getColour() << setw(12) << currentCat.getEarType() << setw(10) << currentCat.getHeight() << setw(16) << 
+		currentCat.getTailColour() << setw(10) << currentCatDad << currentCatMum << endl;
+	}
+	
+	cout << endl;
+	//horses
+	map<std::string, Horse>::iterator it;
+	for (it = globalHorseMap.begin(); it != globalHorseMap.end(); it++) {
+		Horse currentHorse = it->second;
+		string currentHorseMum = "N/A";
+		string currentHorseDad = "N/A";
+		
+		if (currentHorse.getDad() != 0) {
+			currentHorseMum = currentHorse.getMumsName();
+			currentHorseDad = currentHorse.getDad()->getName();
+		}
+		
+		cout << left;
+		cout << setw(10) << currentHorse.getName() << setw(10) << "Horse" << setw(10) << 
+		currentHorse.getBreed() << setw(10) << currentHorse.getColour() << setw(12) << currentHorse.getEarType() << setw(10) << currentHorse.getHeight() << setw(16) << 
+		currentHorse.getTailColour() << setw(10) << currentHorseDad << currentHorseMum << endl;
+	}
+}
 
 //main method - run read functions, run output function, take input, run input processing function 
 int main()
@@ -125,6 +200,7 @@ int main()
 	globalDogMap = readT<Dog>("dogs.csv");
 	globalCatMap = readT<Cat>("cats.csv");
 	globalHorseMap = readT<Horse>("horses.csv");
+	displayInventory();
 	while (true){
 		processInput();
 	}
