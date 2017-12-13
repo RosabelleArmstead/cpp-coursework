@@ -1,3 +1,5 @@
+#ifndef ANIMAL_H
+#define ANIMAL_H
 #include <string>
 #include "Aesthetics.h"
 class Animal : public Aesthetics {
@@ -13,3 +15,5 @@ private:
 	Animal *animal;
 	std::string mumsName;
 };
+
+#endif /* ANIMAL_H */

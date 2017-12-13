@@ -1,3 +1,5 @@
+#ifndef AESTHETICS_H
+#define AESTHETICS_H
 #include <string>
 
 class Aesthetics {
@@ -13,3 +15,5 @@ private:
   std::string height;
   std::string tailColour;
 };
+
+#endif /* AESTHETICS_H */
