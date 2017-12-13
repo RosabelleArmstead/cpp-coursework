@@ -13,9 +13,10 @@ using namespace std;
 //map<string, Dog> readDogs(string filename);
 string ltrim(string s, const char* t);
 void processInput();
-void processDog (string inputAnimal, string file);
-void processCat (string inputAnimal, string file);
-void processHorse (string inputAnimal, string file);
+//void processDog (string inputAnimal, string file);
+//void processCat (string inputAnimal, string file);
+//void processHorse (string inputAnimal, string file);
+void processAnimal(string inputAnimal, T animal, map<string, T> map);
 string chooseFile(string inputAnimal);
 
 map<string, Dog> globalDogMap;
@@ -106,7 +107,7 @@ void processInput()
 
 template <class T> void processAnimal(string inputAnimial, T animal, map<string,T> tMap) {
 	
-	T animal = tMap.at(inputAnimal);
+	T tmp = tMap.at(inputAnimal);
 	cout << "Paternal tree of " << inputAnimal << ":" << endl;
 	cout << inputAnimal << " <-- ";
 	while(tMap.at(tmp.getName()).getDad()!=0) {
@@ -117,43 +118,7 @@ template <class T> void processAnimal(string inputAnimial, T animal, map<string,
 	
 }
 
-//methods to process animals - use template and pass classes?
-void processDog (string inputAnimal, string file)
-{
-	map<string, Dog> dogs = readDogs(file);
-	Dog tmp = dogs.at(inputAnimal);
-	cout << "Paternal tree of " << inputAnimal << ":" << endl;
-	cout << inputAnimal << " <-- ";
-	while(dogs.at(tmp.getName()).getDad()!=0) {
-		cout << tmp.getDad()->getName() << " <-- ";
-		tmp = dogs.at(tmp.getDad()->getName());
-	}
-	cout << "[END]" << endl;
-}
-void processCat (string inputAnimal, string file)
-{
-	map<string, Cat> cats = readCats(file);
-	Cat tmp = cats.at(inputAnimal);
-	cout << "Paternal tree of " << inputAnimal << ":" << endl;
-	cout << inputAnimal << " <-- ";
-	while(cats.at(tmp.getName()).getDad()!=0) {
-		cout << tmp.getDad()->getName() << " <-- ";
-		tmp = cats.at(tmp.getDad()->getName());
-	}
-	cout << "[END]" << endl;
-}
-void processHorse (string inputAnimal, string file)
-{
-	map<string, Horse> horses = readHorses(file);
-	Horse tmp = horses.at(inputAnimal);
-	cout << "Paternal tree of " << inputAnimal << ":" << endl;
-	cout << inputAnimal << " <-- ";
-	while(horses.at(tmp.getName()).getDad()!=0) {
-		cout << tmp.getDad()->getName() << " <-- ";
-		tmp = horses.at(tmp.getDad()->getName());
-	}
-	cout << "[END]" << endl;
-}
+
 //main method - run read functions, run output function, take input, run input processing function 
 int main()
 {
