@@ -71,8 +71,8 @@ void display()
 
 }
 //trim for processing input
-string ltrim(string s, const char* t = "dch \t\n\r\f\v") {
-	return s.erase(0, s.find_first_not_of(t));
+string ltrim(string s) {
+	return s.erase(0, 2);
 }
 
 //process user input to find paternal family tree
@@ -109,12 +109,16 @@ void processInput()
 
 template <class T> void processAnimal(string inputAnimal, map<string,T> tMap) {
 	
-	Animal animal = tMap.at(inputAnimal);
-	cout << "Paternal tree of " << inputAnimal << ":" << endl;
-	cout << inputAnimal << " <-- ";
-	while(tMap.at(animal.getName()).getDad()!=0) {
-		cout << animal.getDad()->getName() << " <-- ";
-		animal = tMap.at(animal.getDad()->getName());
+	try {
+		Animal animal = tMap.at(inputAnimal);
+		cout << "Paternal tree of " << inputAnimal << ":" << endl;
+		cout << inputAnimal << " <-- ";
+		while(tMap.at(animal.getName()).getDad()!=0) {
+			cout << animal.getDad()->getName() << " <-- ";
+			animal = tMap.at(animal.getDad()->getName());
+		}
+	} catch (const out_of_range& e) {
+		cout << inputAnimal << "<--";
 	}
 	cout << "[END]" << endl;
 	
