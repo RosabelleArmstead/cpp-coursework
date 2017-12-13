@@ -18,6 +18,11 @@ void processInput();
 //void processCat (string inputAnimal, string file);
 //void processHorse (string inputAnimal, string file);
 template <class T> void processAnimal(string inputAnimal, map<string, T> map);
+bool checkIfInDogMap(string name);
+bool checkIfInCatMap(string name);
+bool checkIfInHorseMap(string name);
+bool checkIfInAnyMap(string name);
+
 string chooseFile(string inputAnimal);
 
 map<string, Dog> globalDogMap;
@@ -78,6 +83,7 @@ string ltrim(string s) {
 //process user input to find paternal family tree
 void processInput()
 {
+	//bool found;
 	string inputAnimal = "";
 	cout << "Enter the first letter of the animal group and the name of the specified one to find its paternal tree: ";
 	getline(cin, inputAnimal);
@@ -85,25 +91,120 @@ void processInput()
 	if (inputAnimal[0] == 'd')
 	{
 		inputAnimal = ltrim(inputAnimal);
-		processAnimal<Dog>(inputAnimal, globalDogMap);
+		checkIfInDogMap(inputAnimal);
+		//processAnimal<Dog>(inputAnimal, globalDogMap);
+		
 	}
 	else if (inputAnimal[0] == 'c')
 	{
 		inputAnimal = ltrim(inputAnimal);
-		processAnimal<Cat>(inputAnimal, globalCatMap);
+		checkIfInCatMap(inputAnimal);
+		//processAnimal<Cat>(inputAnimal, globalCatMap);
 	}
 	else if (inputAnimal[0] == 'h')
 	{
 		inputAnimal = ltrim(inputAnimal);
-		processAnimal<Horse>(inputAnimal, globalHorseMap);
+		checkIfInHorseMap(inputAnimal);
+		//processAnimal<Horse>(inputAnimal, globalHorseMap);
+	}
+	else if (inputAnimal[0] == 'a')
+	{
+		inputAnimal == ltrim(inputAnimal);
+		
+		try {
+			checkIfInAnyMap(inputAnimal);
+			
+		}
+		catch (const char* msg) {
+			cerr << msg << endl;
+		}
+
 	}
 	else
 	{
-		cout << "Not an animal!";
+		cout << "Not an animal!" << endl;
 	}
 	
 	
 	//TODO: try catch for if animal not existing
+}
+
+
+bool checkIfInDogMap(string name) {
+	try {
+
+		globalDogMap.at(name);
+		processAnimal<Dog>(name, globalDogMap);
+		return true;
+
+	} catch (const out_of_range& e) {
+		cout << name << " was not found within the \e[mDogs!" << endl;
+		return false;
+	}
+
+}
+
+bool checkIfInCatMap(string name) {
+	try {
+
+		globalCatMap.at(name);
+		processAnimal<Cat>(name, globalCatMap);
+		return true;
+
+	} catch (const out_of_range& e) {
+		cout << name << " was not found within the \e[mCats!" << endl;
+		return false;
+	}
+
+}
+
+bool checkIfInHorseMap(string name) {
+	try {
+
+		globalHorseMap.at(name);
+		processAnimal<Horse>(name, globalHorseMap);
+		return true;
+
+	} catch (const out_of_range& e) {
+		cout << name << " was not found within the \e[mHorse!" << endl;
+		return false;
+	}
+
+}
+
+bool checkIfInAnyMap(string name) {
+	/* bool found = false;
+	if(globalDogMap.find(name)==globalDogMap.end()) {		
+		found = true;
+		processAnimal<Dog>(name, globalDogMap);
+	}
+	else if(globalCatMap.find(name)==globalCatMap.end()) {
+		found = true;
+		processAnimal<Cat>(name, globalCatMap);
+	}
+	else if(globalHorseMap.find(name)==globalHorseMap.end()) {
+		found = true;
+		processAnimal<Horse>(name, globalHorseMap);
+	}
+	if(!found) {
+		cout << name;
+		throw " was not found within any inventory!";
+	}
+	return found; */
+	if(checkIfInDogMap(name)) {
+		processAnimal<Dog>(name, globalDogMap);
+	}
+	else if (checkIfInCatMap(name)) {
+		processAnimal<Cat>(name, globalCatMap);
+	}
+	else if (checkIfInHorseMap(name)) {
+		processAnimal<Horse>(name, globalHorseMap);
+	}
+	else {
+		cout << name << " was not found within any inventory!" << endl;
+	}
+	
+	
 }
 
 
