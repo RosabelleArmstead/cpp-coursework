@@ -107,7 +107,7 @@ void processInput()
 
 template <class T> void processAnimal(string inputAnimal, T animal, map<string,T> tMap) {
 	
-	T tmp = tMap.at(inputAnimal);
+	animal = tMap.at(inputAnimal);
 	cout << "Paternal tree of " << inputAnimal << ":" << endl;
 	cout << inputAnimal << " <-- ";
 	while(tMap.at(tmp.getName()).getDad()!=0) {
