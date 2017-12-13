@@ -21,7 +21,7 @@ template <class T> void processAnimal(string inputAnimal, map<string, T> map);
 bool checkIfInDogMap(string name);
 bool checkIfInCatMap(string name);
 bool checkIfInHorseMap(string name);
-bool checkIfInAnyMap(string name);
+void checkIfInAnyMap(string name);
 
 string chooseFile(string inputAnimal);
 
@@ -91,20 +91,27 @@ void processInput()
 	if (inputAnimal[0] == 'd')
 	{
 		inputAnimal = ltrim(inputAnimal);
-		checkIfInDogMap(inputAnimal);
+		if(!checkIfInDogMap(inputAnimal)) {
+			cout << inputAnimal << " was not found within the \e[mDogs!" << endl;
+		}
 		//processAnimal<Dog>(inputAnimal, globalDogMap);
 		
 	}
 	else if (inputAnimal[0] == 'c')
 	{
 		inputAnimal = ltrim(inputAnimal);
-		checkIfInCatMap(inputAnimal);
+		if(!checkIfInCatMap(inputAnimal)) {
+			cout << inputAnimal << " was not found within the \e[mCats!" << endl;
+		}
 		//processAnimal<Cat>(inputAnimal, globalCatMap);
 	}
 	else if (inputAnimal[0] == 'h')
 	{
 		inputAnimal = ltrim(inputAnimal);
-		checkIfInHorseMap(inputAnimal);
+		if(!checkIfInHorseMap(inputAnimal)) {
+			cout << inputAnimal << " was not found within the \e[mHorses!" << endl;
+		}
+		
 		//processAnimal<Horse>(inputAnimal, globalHorseMap);
 	}
 	else if (inputAnimal[0] == 'a')
@@ -126,7 +133,7 @@ void processInput()
 	}
 	
 	
-	//TODO: try catch for if animal not existing
+	
 }
 
 
@@ -138,7 +145,6 @@ bool checkIfInDogMap(string name) {
 		return true;
 
 	} catch (const out_of_range& e) {
-		cout << name << " was not found within the \e[mDogs!" << endl;
 		return false;
 	}
 
@@ -152,7 +158,6 @@ bool checkIfInCatMap(string name) {
 		return true;
 
 	} catch (const out_of_range& e) {
-		cout << name << " was not found within the \e[mCats!" << endl;
 		return false;
 	}
 
@@ -166,13 +171,12 @@ bool checkIfInHorseMap(string name) {
 		return true;
 
 	} catch (const out_of_range& e) {
-		cout << name << " was not found within the \e[mHorse!" << endl;
 		return false;
 	}
 
 }
 
-bool checkIfInAnyMap(string name) {
+void checkIfInAnyMap(string name) {
 	/* bool found = false;
 	if(globalDogMap.find(name)==globalDogMap.end()) {		
 		found = true;
