@@ -1,7 +1,11 @@
+/* Aesthetics.cpp */
 #include <string>
 #include "Aesthetics.h"
 using namespace std;
 
+/*
+* Defines the behaviour of Aesthetics such as colour and ear type.
+*/
 Aesthetics::Aesthetics(string a_colour, string a_earType, string a_height, string a_tailColour)
 {
 colour = a_colour;

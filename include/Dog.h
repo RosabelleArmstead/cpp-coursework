@@ -1,7 +1,12 @@
+/* Dog.h */
 #ifndef DOG_H
 #define DOG_H
 #include "Animal.h"
 #include <string>
+
+/*
+* Defines the properties of a Dog object. Inherits from Animal class.
+*/
 
 class Dog: public Animal{
 public:

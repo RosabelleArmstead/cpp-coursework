@@ -1,8 +1,12 @@
+/* Animal.cpp */
 #include "Animal.h"
 #include <string>
 
 using namespace std;
 
+/*
+* Defines the behaviour of an Animal object.
+*/
 Animal::Animal(string a_breed, string a_name, string a_colour, string a_earType, string a_height, string a_tailColour, Animal *a_animal,string a_mumsName) : Aesthetics(a_colour, a_earType, a_height, a_tailColour)
 {
 	breed = a_breed;
