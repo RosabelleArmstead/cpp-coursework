@@ -14,6 +14,8 @@ map<string, Dog> readDogs(string filename);
 string ltrim(string s, const char* t);
 void processInput();
 void processDog (string inputAnimal, string file);
+void processCat (string inputAnimal, string file);
+void processHorse (string inputAnimal, string file);
 string chooseFile(string inputAnimal);
 
 //read dogs csv into data structure
@@ -95,7 +97,7 @@ map<string, Cat> readCats(string fileName)
 	return catMap;
 }
 //read horses csv into data structure
-void readHorses()
+map<string, Horse> readHorses(string fileName)
 {
 	string param[8];
 	map<string, Horse> horseMap;
@@ -219,7 +221,7 @@ void processCat (string inputAnimal, string file)
 }
 void processHorse (string inputAnimal, string file)
 {
-	map<string, Horse> horses = readhorses(file);
+	map<string, Horse> horses = readHorses(file);
 	Horse tmp = horses.at(inputAnimal);
 	cout << "Paternal tree of " << inputAnimal << ":" << endl;
 	cout << inputAnimal << " <-- ";
@@ -232,5 +234,7 @@ void processHorse (string inputAnimal, string file)
 //main method - run read functions, run output function, take input, run input processing function 
 int main()
 {
-	processInput();
+	while (true){
+		processInput();
+	}
 }
