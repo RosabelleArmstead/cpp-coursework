@@ -83,15 +83,15 @@ void processInput()
 	
 	if (inputAnimal[0] == 'd')
 	{
-		processAnimal<Dog>(Dog, globalDogMap);
+		processAnimal<Dog>(inputAnimal, Dog, globalDogMap);
 	}
 	else if (inputAnimal[0] == 'c')
 	{
-		processAnimal<Cat>(Cat, globalCatMap);
+		processAnimal<Cat>(inputAnimal, Cat, globalCatMap);
 	}
 	else if (inputAnimal[0] == 'h')
 	{
-		processAnimal<Horse>(Horse, globalHorseMap);
+		processAnimal<Horse>(inputAnimal, Horse, globalHorseMap);
 	}
 	else
 	{
