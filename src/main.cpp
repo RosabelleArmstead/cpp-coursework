@@ -116,14 +116,16 @@ void processInput()
 	}
 	else if (inputAnimal[0] == 'a')
 	{
-		inputAnimal == ltrim(inputAnimal);
+		inputAnimal = ltrim(inputAnimal);
+	
 		
 		try {
 			checkIfInAnyMap(inputAnimal);
 			
+			
 		}
 		catch (const char* msg) {
-			cerr << msg << endl;
+			cerr << inputAnimal << msg << endl;
 		}
 
 	}
@@ -139,12 +141,13 @@ void processInput()
 
 bool checkIfInDogMap(string name) {
 	try {
-
+			
 		globalDogMap.at(name);
 		processAnimal<Dog>(name, globalDogMap);
 		return true;
 
 	} catch (const out_of_range& e) {
+		
 		return false;
 	}
 
@@ -190,22 +193,25 @@ void checkIfInAnyMap(string name) {
 		found = true;
 		processAnimal<Horse>(name, globalHorseMap);
 	}
-	if(!found) {
+	if(!found) {	
 		cout << name;
 		throw " was not found within any inventory!";
 	}
 	return found; */
-	if(checkIfInDogMap(name)) {
-		processAnimal<Dog>(name, globalDogMap);
+	
+	
+
+	 if(checkIfInDogMap(name)) {
+		//processAnimal<Dog>(name, globalDogMap);
 	}
 	else if (checkIfInCatMap(name)) {
-		processAnimal<Cat>(name, globalCatMap);
+		//processAnimal<Cat>(name, globalCatMap);
 	}
 	else if (checkIfInHorseMap(name)) {
-		processAnimal<Horse>(name, globalHorseMap);
+		//processAnimal<Horse>(name, globalHorseMap);
 	}
 	else {
-		cout << name << " was not found within any inventory!" << endl;
+		throw " was not found within any inventory!";
 	}
 	
 	
