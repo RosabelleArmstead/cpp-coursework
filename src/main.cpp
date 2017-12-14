@@ -90,8 +90,9 @@ void processInput()
 	cout << "Enter the first letter of the animal group and the name of the specified one to find its paternal tree: ";
 	getline(cin, inputAnimal);
 
-	// Checks if input was a character followed by a space followed by a name
-	if(inputAnimal[1]!=' ') {
+	
+	if(inputAnimal[1]!=' ') // if input was not a character followed by a space followed by a name, start again
+	{
 		processInput();
 	
 	} else {
@@ -238,12 +239,14 @@ template <class T> void processAnimal(string inputAnimal, map<string,T> tMap)
 */
 void displayInventory() 
 {
-	cout << "There are " << globalDogMap.size() << " dog(s), " << globalCatMap.size() << " cat(s) and " << globalHorseMap.size() << " horse(s) in the inventory, which are:" << endl;
+	cout << "There are " << globalDogMap.size() << " dog(s), " << globalCatMap.size() << " cat(s) and " << globalHorseMap.size() << 
+	" horse(s) in the inventory, which are:" << endl;
 	/* column titles formatting */
 	int widthCounter = 91;
 	cout << left;
 	cout << setw(10) << "Name" << setw(10) << "Group" << setw(10) << "Breed" << setw(10) 
-	<< "Colour" << setw(12) << "Ear Type" << setw(10) << "Height" << setw(16) << "Tail Colour" << setw(10) << "Dad" << setw(3) << "Mum" << endl;
+	<< "Colour" << setw(12) << "Ear Type" << setw(10) << "Height" << setw(16) << "Tail Colour" << setw(10) << "Dad" << setw(3) << 
+	"Mum" << endl;
 	for (int i = 0; i <= widthCounter; i++)	
 	{
  		cout << "-";	
@@ -307,7 +310,6 @@ void displayInventory()
 	}
 }
 
-//main method - run read functions, run output function, take input, run input processing function 
 /*
 * Entry point for the program. Runs the readT function to create all animal maps. Runs
 * the displayInventory function to display all animals. Continues running the program
