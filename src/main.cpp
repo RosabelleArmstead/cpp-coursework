@@ -89,45 +89,53 @@ void processInput()
 	string inputAnimal = "";
 	cout << "Enter the first letter of the animal group and the name of the specified one to find its paternal tree: ";
 	getline(cin, inputAnimal);
-	if (inputAnimal[0] == 'd') // if user inputs d, dog map is checked
-	{
-		inputAnimal = ltrim(inputAnimal);
-		if(!checkIfInDogMap(inputAnimal)) // if dog doesn't exist in map, error message
+
+	// Checks if input was a character followed by a space followed by a name
+	if(inputAnimal[1]!=' ') {
+		processInput();
+	
+	} else {
+
+		if (inputAnimal[0] == 'd') // if user inputs d, dog map is checked
 		{
-			cout << inputAnimal << " was not found within the \e[mDogs!" << endl;
-		}		
-	}
-	else if (inputAnimal[0] == 'c') // if user inputs c, cat map is checked
-	{
-		inputAnimal = ltrim(inputAnimal);
-		if(!checkIfInCatMap(inputAnimal)) // if cat doesn't exist in map, error message
-		{
-			cout << inputAnimal << " was not found within the \e[mCats!" << endl;
+			inputAnimal = ltrim(inputAnimal);
+			if(!checkIfInDogMap(inputAnimal)) // if dog doesn't exist in map, error message
+			{
+				cout << inputAnimal << " was not found within the \e[mDogs!" << endl;
+			}		
 		}
-	}
-	else if (inputAnimal[0] == 'h') // if user inputs h, horse map is checked
-	{
-		inputAnimal = ltrim(inputAnimal);
-		if(!checkIfInHorseMap(inputAnimal)) // if horse doesn't exist in map, error message
+		else if (inputAnimal[0] == 'c') // if user inputs c, cat map is checked
 		{
-			cout << inputAnimal << " was not found within the \e[mHorses!" << endl;
+			inputAnimal = ltrim(inputAnimal);
+			if(!checkIfInCatMap(inputAnimal)) // if cat doesn't exist in map, error message
+			{
+				cout << inputAnimal << " was not found within the \e[mCats!" << endl;
+			}
 		}
-	}
-	else if (inputAnimal[0] == 'a') // if user inputs a, all maps are checked
-	{
-		inputAnimal = ltrim(inputAnimal);
-		try //try catch so if animal doesn't exist in any map, error message
+		else if (inputAnimal[0] == 'h') // if user inputs h, horse map is checked
 		{
-			checkIfInAnyMap(inputAnimal);
+			inputAnimal = ltrim(inputAnimal);
+			if(!checkIfInHorseMap(inputAnimal)) // if horse doesn't exist in map, error message
+			{
+				cout << inputAnimal << " was not found within the \e[mHorses!" << endl;
+			}
 		}
-		catch (const char* msg) 
+		else if (inputAnimal[0] == 'a') // if user inputs a, all maps are checked
 		{
-			cerr << inputAnimal << msg << endl;
+			inputAnimal = ltrim(inputAnimal);
+			try //try catch so if animal doesn't exist in any map, error message
+			{
+				checkIfInAnyMap(inputAnimal);
+			}
+			catch (const char* msg) 
+			{
+				cerr << inputAnimal << msg << endl;
+			}
 		}
-	}
-	else // if user inputs anything else, there is no map so error message
-	{
-		cout << "Not an animal!" << endl;
+		else // if user inputs anything else, there is no map so error message
+		{
+			cout << "Not an animal!" << endl;
+		}
 	}
 }
 
