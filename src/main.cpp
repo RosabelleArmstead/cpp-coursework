@@ -135,7 +135,7 @@ void processInput()
 		}
 		else // if user inputs anything else, there is no map so error message
 		{
-			cout << "Not an animal!" << endl;
+			cout << "Not an animal! Enter a to search all, c to search cats, d to search dogs or h to search horses." << endl;
 		}
 	}
 }
